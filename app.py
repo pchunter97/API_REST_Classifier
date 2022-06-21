@@ -23,7 +23,7 @@ import joblib
 import numpy as np
 
 nlp = es_core_news_lg.load()
-model=joblib.load('primer_modelov2.pkl')
+model=joblib.load('SVM_model.pkl')
 
 app = Flask(__name__)
 
@@ -40,6 +40,7 @@ def ping(text):
     else:
         return jsonify({'text':'No text'})
 
+#Ruta de clasificación
 @app.route('/get_classification', methods=['POST'])
 def process_json():
     content_type = request.headers.get('Content-Type')
