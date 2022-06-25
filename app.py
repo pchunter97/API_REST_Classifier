@@ -49,9 +49,6 @@ def process_json():
         texto = json['texto']
         ##Preprocesamiento
         if len(texto)>0:
-            #texto=texto.lower() #Convertir a minusculas
-            #text_tokenized = word_tokenize(texto) #Tokenizar
-            #text_cleaned = data_cleaner(texto)
         ####################################
         ##Clasificación
             texto_clasificado= clasificar(texto)
@@ -75,50 +72,27 @@ def preprocesar(texto):
     texto = ' '.join(tokens)
     text_vectorized = []
 
-    #df = pd.DataFrame(train_vec, columns=['text'])
-    #for doc in nlp.pipe(df,batch_size=500):
     nlp.pipe(texto)
     if doc.has_vector:
         text_vectorized.append(doc.vector)
         print(doc.text, doc.vector)
     else:
-        #print(doc.text, 'no vector')
         text_vectorized.append(np.zeros((128,), dtype="float32"))
 
-
-    #Lematizar
-    #lemmatizer = WordNetLemmatizer()
-    #texto = [lemmatizer.lemmatize(word) for word in texto]
-    #Stemming
-    #stemmer = LancasterStemmer()
-    #texto = [stemmer.stem(word) for word in texto]
-    #print(texto)
     return text_vectorized
 
 def clasificar(texto):
-    #model=joblib.load('primer_modelo.pkl')
     #Array de ejemplos
     text_vectorized = np.array(preprocesar(texto))
 
-    #model.fit(train_vec1, y_train_ohe[:,0])
-    """if texto == '1':	
-        #Real
-        predicted = model.predict(new)
-        predicted =''.join(str(e) for e in predicted)
-        print(predicted)
-        
-    else:
-    #Fake
-        predicted = model.predict(new2)
-        predicted =''.join(str(e) for e in predicted)
-        print(predicted)"""
-
     predicted = model.predict(text_vectorized)
+    predicted_pro = model.predict_proba(text_vectorized)
     predicted =''.join(str(e) for e in predicted)
+    predicted_pro =''.join(str(e) for e in predicted_pro)
     if predicted == '1':
-        return 'Real'
+        return 'Real: '+predicted_pro
     else:
-        return 'Fake'
+        return 'Fake: '+predicted_pro
     
 
 
