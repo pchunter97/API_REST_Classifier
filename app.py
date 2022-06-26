@@ -16,13 +16,13 @@ import json
 # from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
 import spacy
-import es_core_news_lg
+import es_core_news_md
 from spacy.lang.es.examples import sentences 
 
 import joblib
 import numpy as np
 
-nlp = es_core_news_lg.load()
+nlp = es_core_news_md.load()
 model=joblib.load('SVM_model.pkl')
 
 app = Flask(__name__)
