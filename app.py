@@ -1,19 +1,19 @@
 from flask import Flask,jsonify,request
 import json
 #Librerias para procesamiento de datos
-import re, string, unicodedata
-import nltk
+# import re, string, unicodedata
+# import nltk
 #nltk.download('punkt')
 #nltk.download('stopwords')
 #nltk.download('wordnet')
-from nltk.stem.wordnet import WordNetLemmatizer
-from nltk.stem.lancaster import LancasterStemmer
+# from nltk.stem.wordnet import WordNetLemmatizer
+# from nltk.stem.lancaster import LancasterStemmer
 #nltk.download('omv-1.4')
-import inflect
-from bs4 import BeautifulSoup
-from nltk import word_tokenize, sent_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import LancasterStemmer, WordNetLemmatizer
+# import inflect
+# from bs4 import BeautifulSoup
+# from nltk import word_tokenize, sent_tokenize
+# from nltk.corpus import stopwords
+# from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
 import spacy
 import es_core_news_lg
