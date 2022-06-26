@@ -2,6 +2,5 @@ spacy==3.3.0
 numpy==1.22.4
 Flask==2.1.2
 joblib==1.1.0
-pandas==1.4.2
-inflect==5.6.0
+Flask-Cors==3.0.2
 gunicorn
