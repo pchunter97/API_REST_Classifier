@@ -27,7 +27,11 @@ model=joblib.load('SVM_model.pkl')
 
 app = Flask(__name__)
 
-
+#Ruta de prueba despliegue
+@app.route('/')
+def index():
+    return 'Hello, World!'
+    
 
 #Ruta de prueba
 @app.route('/classifier/<string:text>', methods=['GET'])
