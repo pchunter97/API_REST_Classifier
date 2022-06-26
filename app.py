@@ -1,7 +1,7 @@
 from flask import Flask,jsonify,request
 import json
 #Librerias para procesamiento de datos
-# import re, string, unicodedata
+import re, string, unicodedata
 # import nltk
 #nltk.download('punkt')
 #nltk.download('stopwords')
