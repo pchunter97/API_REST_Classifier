@@ -31,7 +31,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return 'Hello, World!'
-    
+
 
 #Ruta de prueba
 @app.route('/classifier/<string:text>', methods=['GET'])
@@ -101,4 +101,4 @@ def clasificar(texto):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run()
