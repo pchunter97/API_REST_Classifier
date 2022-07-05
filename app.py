@@ -96,7 +96,7 @@ def clasificar(texto):
     if predicted == '1':
         return 'Real: '+predicted_pro
     else:
-        return 'Fake: '+predicted_pro
+        return 'Falso: '+predicted_pro
     
 
 
