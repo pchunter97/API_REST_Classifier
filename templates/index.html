@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador</title>
+</head>
+<body>
+
+
+    <textarea id="texto" placeholder="Ingrese su noticia aquí"></textarea>
+    <br>
+    <button onclick = "sendJson()">Enviar noticia</button>
+    <script>
+        let url ="http://127.0.0.1:5000/get_classification";
+        function sendJson()
+        {
+            let texto = document.getElementById("texto").value;
+            let json = {
+                "texto": texto
+            };
+            let jsonString = JSON.stringify(json);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let json = JSON.parse(xhr.responseText);
+                    console.log(json);
+                }
+            }
+            xhr.send(jsonString);
+        }   
+        </script>
+    
+</body>
+</html>
