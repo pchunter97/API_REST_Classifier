@@ -1,10 +1,104 @@
-body
-{
-    background-color: #fcfcfc;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    color: #333333;
-    margin: 0;
-    padding: 0;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#background {
+    width: 400px;
+    animation-name: parpadeo;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name: parpadeo;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+
+    }
+}
+
+
+#background:hover {
+    /* width: 100%; */
+    filter: saturate(280%) !important;
+
+}
+
+
+.footer {
+
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: #e8eaf6;
+
+    background-color: #3a4e57;
+
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.nav-wrapper {
+    background-color: #3a4e57;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#metrics {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #3a4e57 !important;
+    color: #e8eaf6;
 }

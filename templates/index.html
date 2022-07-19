@@ -1,47 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasificador</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Materialize -->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
+    <!-- Bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+ 
 </head>
 <nav>
-    Clasificador
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center ">Clasificador de noticias</a>
+        <!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+        </ul> -->
+    </div>
 </nav>
+
 <body>
-    <textarea id="texto" placeholder="Ingrese su noticia aquí mismo"></textarea>
+    <div id="API_information">
+   
+        <div class="row">
+            <div class="col s12 m12 center">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Acerca del sitio</span>
+                        <p>Este sitio ha sido creado con el propósito de permitir a los usuarios realizar una
+                            clasificación de noticias mediante le ingreso en el cuadro de texto
+                            que se encuentra abajo, posteriormente realizar el envío. Dicho texto correspondiente a una
+                            noticia, será procesado mediante el servicio web y utilizando técnicas de aprendizaje de
+                            máquina
+                            se determinará si el texto enviado corresponde o no a una noticia falsa.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <h5 class="card-header">Featured</h5>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> -->
+    </div>
     <br>
-    <button class="waves-effect waves-light btn" onclick = "sendJson()">Enviar noticia</button>
-    <!-- <a class="waves-effect waves-light btn">button</a> -->
-    <script>
-        let url ="http://127.0.0.1:5000/get_classification";
-        function sendJson()
-        {
-            let texto = document.getElementById("texto").value;
-            let json = {
-                "texto": texto
-            };
-            let jsonString = JSON.stringify(json);
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-type", "application/json");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    let json = JSON.parse(xhr.responseText);
-                    console.log(json);
+    <br>
+
+    <div id="form">
+        <!-- <textarea id="texto" placeholder="Ingrese su noticia aquí mismo"></textarea> -->
+        <div class="row">
+            <!-- <form class="col s12"> -->
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="texto" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Ingrese el texto de la noticia aquí.</label>
+                  <button class="waves-effect waves-light btn" onclick="sendJson()">Enviar noticia</button>
+                </div>
+                
+
+              </div>
+              
+            <!-- </form> -->
+          </div>
+          
+        <!-- <div class="progress">
+            <div class="indeterminate"></div>
+        </div> -->
+        <!-- <button class="waves-effect waves-light btn" onclick="sendJson()">Enviar noticia</button> -->
+        <!-- <a class="waves-effect waves-light btn">button</a> -->
+        <script>
+            let url = "http://127.0.0.1:5000/get_classification";
+            function sendJson() {
+                let texto = document.getElementById("texto").value;
+                let json = {
+                    "texto": texto
+                };
+                let jsonString = JSON.stringify(json);
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                    }
                 }
-            }
-            xhr.send(jsonString);
-        }   
+                xhr.send(jsonString);
+            }   
         </script>
-    
+    </div>
+    <br>
+    <br>
+    <div id="results">
+        <div class="row">
+            <div class="col s12 m5">
+              <div class="card-panel teal">
+                <span class="white-text">Como resultado del procesamiento utilizando una red neuronal LSTM con las siguientes métricas:
+                <ul >
+                    <li id="metrics">Precision: 0.99<span id="precision"></span></li>
+                    <li id="metrics">Recall: 1.8 <span id="recall"></span></li>
+                    <li id="metrics">F1: 0.76 <span id="f1"></span></li>
+                </span>
+              </div>
+            </div>
+
+            <div class="col s12 m5 right">
+                <img id="background" src="https://catalogplayer.com/wp-content/uploads/2021/07/AI_generic_2.jpg"></img>
+              </div>
+          </div>
+    </div>
+    <!-- Información acerca de la API: -->
+
 </body>
+<footer class="footer center">
+    <div class="footer-copyright">
+        <div class="container">
+            ©2022 ESPOCH
+        </div>
+    </div>
+</footer>
 </html>

@@ -1,6 +1,8 @@
 from flask import Flask,jsonify,request, render_template
 import json
 #Librerias para procesamiento de datos
+import keras
+import tensorflow as tf
 import re, string, unicodedata
 # import nltk
 #nltk.download('punkt')
@@ -16,7 +18,7 @@ import re, string, unicodedata
 # from nltk.stem import LancasterStemmer, WordNetLemmatizer
 
 import spacy
-import es_core_news_md
+import es_core_news_lg
 from spacy.lang.es.examples import sentences 
 
 import joblib
@@ -24,6 +26,8 @@ import numpy as np
 
 nlp = es_core_news_md.load()
 model=joblib.load('SVM_model.pkl')
+model = keras.models.load_model('LSTM.h5')
+
 
 app = Flask(__name__)
 
