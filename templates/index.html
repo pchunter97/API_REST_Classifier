@@ -5,13 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasificador</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
 </head>
+<nav>
+    Clasificador
+</nav>
 <body>
-
-
-    <textarea id="texto" placeholder="Ingrese su noticia aquí"></textarea>
+    <textarea id="texto" placeholder="Ingrese su noticia aquí mismo"></textarea>
     <br>
-    <button onclick = "sendJson()">Enviar noticia</button>
+    <button class="waves-effect waves-light btn" onclick = "sendJson()">Enviar noticia</button>
+    <!-- <a class="waves-effect waves-light btn">button</a> -->
     <script>
         let url ="http://127.0.0.1:5000/get_classification";
         function sendJson()
