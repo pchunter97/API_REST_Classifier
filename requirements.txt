@@ -12,9 +12,6 @@ colorama==0.4.4
 cycler==0.11.0
 cymem==2.0.6
 es-core-news-lg @ https://github.com/explosion/spacy-models/releases/download/es_core_news_lg-3.3.0/es_core_news_lg-3.3.0-py3-none-any.whl
-es-core-news-md @ https://github.com/explosion/spacy-models/releases/download/es_core_news_md-3.3.0/es_core_news_md-3.3.0-py3-none-any.whl
-es-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.3.0/es_core_news_sm-3.3.0-py3-none-any.whl
-es-dep-news-trf @ https://github.com/explosion/spacy-models/releases/download/es_dep_news_trf-3.3.0/es_dep_news_trf-3.3.0-py3-none-any.whl
 filelock==3.7.0
 Flask==2.1.2
 flatbuffers==1.12

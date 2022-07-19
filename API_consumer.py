@@ -25,7 +25,8 @@ dataframe = pd.read_csv('C:/Users/Dell/Desktop/Trabajo de titulación/Dataset/da
 short = 0
 medium = 0
 long = 0
-for idx in tqdm(range(len(dataframe))):
+# for idx in tqdm(range(len(dataframe))):
+for idx in tqdm(range(1)):
     if(len(dataframe['texto'].iloc[idx])>1300 and len(dataframe['texto'].iloc[idx])<2000):
         short = short+1
         request(dataframe['texto'].iloc[idx])
