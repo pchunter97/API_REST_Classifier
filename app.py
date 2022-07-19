@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify,request, render_template
 import json
 #Librerias para procesamiento de datos
 import re, string, unicodedata
@@ -30,7 +30,7 @@ app = Flask(__name__)
 #Ruta de prueba despliegue
 @app.route('/')
 def index():
-    return 'Hello, World modified!'
+    return 'Hello, World!'
     
 
 #Ruta de prueba
@@ -65,6 +65,16 @@ def process_json():
     else:
         return 'Content-Type not supported!'      
 
+#Retornar página con peticion get and return index.html file
+@app.route('/get_classification', methods=['GET'])
+def get_page():
+    #return app.send_static_file('index.html')
+    #return the index.html file
+    return render_template('index.html')
+    # return 'Hello, World!'
+
+
+
 def preprocesar(texto):
     texto = texto.lower() #Convertir a minusculas
     #Remover caracteres especiales
@@ -96,9 +106,9 @@ def clasificar(texto):
     if predicted == '1':
         return 'Real: '+predicted_pro
     else:
-        return 'Fake: '+predicted_pro
+        return 'Falso: '+predicted_pro
     
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
